@@ -1,0 +1,19 @@
+
+<p>$action.getText('rating.YourRating'):</p>
+
+#foreach($number in [1..5])
+    <span class="aui-icon aui-icon-large aui-iconfont-new-star icon-selector"></span>
+#end
+
+<p>$action.getText('rating.Results'):</p>
+#foreach($number in [1..5])
+<span class="aui-icon aui-icon-large aui-iconfont-star-filled icon-selected"></span>
+#end
+
+<span id="resultRatingBlock">
+    $action.getText('rating.Rating'):
+    <span id="resultRating">$action.getText('rating.noVotes')</span>
+</span>
+<p>
+    <span><span id="rates"></span> $action.getText('rating.rates')</span>
+</p>

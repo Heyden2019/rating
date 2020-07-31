@@ -1,0 +1,39 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <resource type="i18n" name="i18n" location="macrorating"/>
+
+    <web-resource key="macrorating-resources" name="macrorating Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <resource type="download" name="macrorating.css" location="/css/macrorating.css"/>
+        <resource type="download" name="macrorating.js" location="/js_ES5/macrorating.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>macrorating</context>
+    </web-resource>
+
+    <ao key="ao-module">
+        <description>The module configuring the Active Objects service used by this plugin</description>
+        <entity>com.atlassian.macrorating.RatingEntity</entity>
+    </ao>
+
+    <xhtml-macro name="Rating" class="com.atlassian.macrorating.Rating" key='rating-macro'>
+        <description key="rating.macro.desc"/>
+        <category name="formatting"/>
+        <parameters>
+            <parameter name="showmacro" type="boolean" required="true" default="true"/>
+        </parameters>
+    </xhtml-macro>
+
+    <rest key="RatingService" path="/rating" version="1.0">
+        <package>com.atlassian.macrorating</package>
+    </rest>
+
+</atlassian-plugin>
